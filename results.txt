@@ -1,0 +1,4 @@
+
+Lenovo 2530 thinkpad Intel Core i7 4 core ~2 GHz
+C90 g=820130816 passed in 296 ms
+CPP g=820130816 passed in 7036 ms
