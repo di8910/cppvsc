@@ -10,4 +10,5 @@ Test 2: STL list vs. C linked list
 
 C90 g=3000000 passed push,iterate+call,pop in 109,0,47 ms
 CPP g=3000000 passed push,iterate+call,pop in 47,16,15 ms
+CPP with pointer data g=3000000 passed push,iterate+call,pop in 109,0,47 ms
 
