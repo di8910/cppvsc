@@ -29,9 +29,9 @@ void Widget_draw(Widget* w)
 
 struct ListLink
 {
-	void* data;
 	struct ListLink* next;
 	struct ListLink* prev;
+	char data[0];
 };
 
 typedef struct ListLink ListLink;
@@ -69,10 +69,9 @@ void List_free(List* l)
 	l->tail = NULL;
 }
 
-void List_pushback(List* l, void* data)
+void List_pushback(List* l, int size)
 {
-	ListLink* link = (ListLink*)malloc(sizeof(ListLink));
-	link->data = data;
+	ListLink* link = (ListLink*)malloc(sizeof(ListLink)+size);
 	link->next = NULL;
 	link->prev = l->tail;
 
@@ -99,7 +98,6 @@ void List_erase(List* l, ListLink* link)
 	else
 		link->next->prev = link->prev;
 
-	free(link->data);
 	free(link);
 
 	--l->size;
@@ -115,7 +113,7 @@ int main()
 	long long passed3;
 	int i;
 
-	Widget* w0;
+	//Widget* w0;
 	List list;
 	ListLink* link;
 
@@ -124,9 +122,8 @@ int main()
 	List_init(&list);
 	for(i=0; i<1000*1000*10; i++)
 	{
-		w0 = (Widget*)malloc(sizeof(Widget));
-		Widget_init((Widget*)w0);
-		List_pushback(&list, w0);
+		List_pushback(&list, sizeof(Widget));
+		Widget_init((Widget*)list.tail->data);
 	}
 	passed = GetTickCount64() - start;
 
@@ -154,7 +151,7 @@ int main()
 	}
 	passed3 = GetTickCount64() - start3;
 
-	printf("C90 g=%d passed push,iterate+call,pop in %lld,%lld,%lld ms\r\n", g, passed, passed2, passed3);
+	printf("C90 with zero-length arrays g=%d passed push,iterate+call,pop in %lld,%lld,%lld ms\r\n", g, passed, passed2, passed3);
 	system("pause");
 
 	return 0;

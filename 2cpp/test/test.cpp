@@ -42,7 +42,7 @@ int main()
 
 	// Push test
 	start = GetTickCount64();
-	for(i=0; i<1000*1000; i++)
+	for(i=0; i<1000*1000*10; i++)
 	{
 		Widget w0;
 		Widget_init(&w0);

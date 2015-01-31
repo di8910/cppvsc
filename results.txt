@@ -8,7 +8,7 @@ CinCPP g=820130816 passed in 296 ms
 
 Test 2: STL list vs. C linked list
 
-C90 g=3000000 passed push,iterate+call,pop in 109,0,47 ms
-CPP g=3000000 passed push,iterate+call,pop in 47,16,15 ms
-CPP with pointer data g=3000000 passed push,iterate+call,pop in 109,0,47 ms
-
+C90 g=30000000 passed push,iterate+call,pop in 873,16,515 ms
+CPP g=30000000 passed push,iterate+call,pop in 500,31,249 ms
+CPP with pointer data g=30000000 passed push,iterate+call,pop in 983,31,500 ms
+C90 with zero-length arrays g=30000000 passed push,iterate+call,pop in 436,32,249 ms
